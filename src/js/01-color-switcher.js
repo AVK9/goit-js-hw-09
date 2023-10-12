@@ -9,9 +9,8 @@ const refs = {
     
 };
 let timerId;
-
 refs.btnStart.addEventListener("click", () => {
-  refs.timerId = setInterval(() => {
+    timerId = setInterval(() => {
     refs.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
         refs.btnStart.setAttribute("disabled", "disabled");
@@ -22,7 +21,6 @@ refs.btnStart.addEventListener("click", () => {
 
 refs.btnStop.addEventListener('click', onStopChangeColor);
 function onStopChangeColor() {
-    console.log('eee');
     clearInterval(timerId)
     refs.btnStop.setAttribute("disabled", "disabled");
     refs.btnStart.removeAttribute("disabled")
