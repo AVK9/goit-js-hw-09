@@ -6,9 +6,9 @@ const refs = {
     btnStart: document.querySelector('button[data-start]'),
     btnStop: document.querySelector('button[data-stop]'),
     body: document.querySelector('body'),
-    timerId
+    
 };
-
+let timerId;
 
 refs.btnStart.addEventListener("click", () => {
   refs.timerId = setInterval(() => {
