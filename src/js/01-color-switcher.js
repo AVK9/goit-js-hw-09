@@ -6,11 +6,12 @@ const refs = {
     btnStart: document.querySelector('button[data-start]'),
     btnStop: document.querySelector('button[data-stop]'),
     body: document.querySelector('body'),
+    timerId
 };
 
 
 refs.btnStart.addEventListener("click", () => {
-  timerId = setInterval(() => {
+  refs.timerId = setInterval(() => {
     refs.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
         refs.btnStart.setAttribute("disabled", "disabled");
