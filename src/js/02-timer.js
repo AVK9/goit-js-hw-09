@@ -37,8 +37,8 @@ flatpickr("#datetime-picker", {
 });
 
 const timeInMs = Date.now();
-console.log(timeInMs);
-console.log(options.defaultDate);
+// console.log(timeInMs);
+// console.log(options.defaultDate);
 let ms;
 const timeLisn = document.querySelector("#datetime-picker");
 timeLisn.addEventListener('input', onSetData);
@@ -55,10 +55,10 @@ function onSetData() {
     function onSetCounter() {
         let timerId = setInterval(function () {
         let timeСounter = convertMs(ms -= 1000)
-            console.log(ms);
+            // console.log(ms);
             let padStartDay = `${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length;
-            console.log(padStartDay);
-        refs.dataDays.textContent = `${timeСounter.days}`.padStart(`${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length, "0");
+            // console.log(padStartDay);
+        refs.dataDays.textContent = `${timeСounter.days}`.padStart(padStartDay, "0");
         refs.dataHours.textContent = `${timeСounter.hours}`.padStart(2, "0");
         refs.dataMinutes.textContent = `${timeСounter.minutes}`.padStart(2, "0");
         refs.dataSeconds.textContent = `${timeСounter.seconds}`.padStart(2, "0");
