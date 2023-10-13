@@ -11,12 +11,23 @@ const options = {
   console.log(selectedDates[0]);
   },
 };
-
 // const fsdf = flatpickr(selector, options)
+
+const refs = {
+    timerTime: document.querySelector(".timer"),
+    dataDays: document.querySelector("[data-days]"),
+    dataHours: document.querySelector('[data-hours]'),
+    dataMinutes: document.querySelector('[data-minutes]'),
+    dataSeconds: document.querySelector('[data-seconds]'),
+    startBtn: document.querySelector('[data-start]'),
+};
+    refs.startBtn.setAttribute("disabled", "disabled");
+    
+
 
 function alertMesage() {
     Notiflix.Notify.failure('Please choose a date in the future');
-}
+};
 
 flatpickr("#datetime-picker", {
   enableTime: true,
@@ -34,14 +45,60 @@ timeLisn.addEventListener('input', onSetData);
 function onSetData() {
      ms = Date.parse(`${timeLisn.value}`) - options.defaultDate;
     console.log(ms);   
-    if (ms > 0 ) { 
-        console.log(`'Будущее' ${ms}`);
-        
+    if (ms > 0) { 
+              refs.startBtn.removeAttribute("disabled");
     } else {
         alertMesage();
 
     };
-console.log(ms);
+    refs.startBtn.addEventListener('click', onSetCounter);
+    function onSetCounter() {
+        let timerId = setInterval(function () {
+        timeСounter = convertMs(ms -= 1000)
+            console.log(ms);
+        let padStartDay = `${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length;
+        refs.dataDays.textContent = `${timeСounter.days}`.padStart(padStartDay, "0");
+        refs.dataHours.textContent = `${timeСounter.hours}`.padStart(2, "0");
+        refs.dataMinutes.textContent = `${timeСounter.minutes}`.padStart(2, "0");
+        refs.dataSeconds.textContent = `${timeСounter.seconds}`.padStart(2, "0");
+
+
+
+        // refs.dataDays.textContent = timeСounter.days;
+        // refs.dataHours.textContent = timeСounter.hours;
+        // refs.dataMinutes.textContent = timeСounter.minutes;
+        // refs.dataSeconds.textContent = timeСounter.seconds;
+        }, 1000);
+
+        setTimeout(() => { clearInterval(timerId)}, ms);
+            
+        let timeСounter = convertMs(ms);
+       
+        // console.log(`${timeСounter.days}`.length);
+        // console.log(timeСounter.days);
+        // console.log(`${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length);
+        // let padStartDay = `${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length;
+        // refs.dataDays.textContent = `${timeСounter.days}`.padStart(padStartDay, "0");
+        // refs.dataHours.textContent = `${timeСounter.hours}`.padStart(2, "0");
+        // refs.dataMinutes.textContent = `${timeСounter.minutes}`.padStart(2, "0");
+        // refs.dataSeconds.textContent = `${timeСounter.seconds}`.padStart(2, "0");
+
+        // console.log((timeСounter.minutes));
+        
+        // `${timeСounter.days}`.length = 1 ? 2 : `${timeСounter.days}`.length
+
+        // setTimeout(() => {
+        //     clearInterval(timerId); alert('stop');
+        // }, 5000);
+
+
+//  timerId = setInterval(() => {
+    
+//   }, 1000);
+
+
+    }
+
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -57,16 +114,17 @@ function convertMs(ms) {
   const minutes = Math.floor(((ms % day) % hour) / minute);
   // Remaining seconds
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-// console.log(`${days}:${hours}:${minutes}:${seconds}`);
+    // console.log(`${days}:${hours}:${minutes}:${seconds}`);
     return { days, hours, minutes, seconds };
+}
+}
+
+function addLeadingZero(sss) {
     
+   let dsfddf = `${sss}`.padStart(2, "0");
+    console.log(dsfddf);
 }
-console.log(convertMs(ms));
-
-}
-
-
-
+addLeadingZero(1)
 
 
 // const currentDate = new Date();
