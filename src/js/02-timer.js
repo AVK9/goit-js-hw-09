@@ -54,10 +54,11 @@ function onSetData() {
     refs.startBtn.addEventListener('click', onSetCounter);
     function onSetCounter() {
         let timerId = setInterval(function () {
-        timeСounter = convertMs(ms -= 1000)
+        let timeСounter = convertMs(ms -= 1000)
             console.log(ms);
-        let padStartDay = `${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length;
-        refs.dataDays.textContent = `${timeСounter.days}`.padStart(padStartDay, "0");
+            let padStartDay = `${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length;
+            console.log(padStartDay);
+        refs.dataDays.textContent = `${timeСounter.days}`.padStart(`${timeСounter.days}`.length <= 1 ? 2 : `${timeСounter.days}`.length, "0");
         refs.dataHours.textContent = `${timeСounter.hours}`.padStart(2, "0");
         refs.dataMinutes.textContent = `${timeСounter.minutes}`.padStart(2, "0");
         refs.dataSeconds.textContent = `${timeСounter.seconds}`.padStart(2, "0");
@@ -68,11 +69,11 @@ function onSetData() {
         // refs.dataHours.textContent = timeСounter.hours;
         // refs.dataMinutes.textContent = timeСounter.minutes;
         // refs.dataSeconds.textContent = timeСounter.seconds;
-        }, 1000);
+        // }, 1000);
 
         setTimeout(() => { clearInterval(timerId)}, ms);
             
-        let timeСounter = convertMs(ms);
+        // let timeСounter = convertMs(ms);
        
         // console.log(`${timeСounter.days}`.length);
         // console.log(timeСounter.days);
@@ -94,7 +95,7 @@ function onSetData() {
 
 //  timerId = setInterval(() => {
     
-//   }, 1000);
+  }, 1000);
 
 
     }
@@ -119,12 +120,12 @@ function convertMs(ms) {
 }
 }
 
-function addLeadingZero(sss) {
+// function addLeadingZero(sss) {
     
-   let dsfddf = `${sss}`.padStart(2, "0");
-    console.log(dsfddf);
-}
-addLeadingZero(1)
+//    let dsfddf = `${sss}`.padStart(2, "0");
+//     console.log(dsfddf);
+// }
+// addLeadingZero(1)
 
 
 // const currentDate = new Date();
