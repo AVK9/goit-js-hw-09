@@ -57,7 +57,7 @@ function onSetData() {
         refs.dataHours.textContent = addLeadingZero(timeСounter.hours);
         refs.dataMinutes.textContent = addLeadingZero(timeСounter.minutes);
         refs.dataSeconds.textContent = addLeadingZero(timeСounter.seconds);
-
+        refs.startBtn.setAttribute("disabled", "disabled");
         setTimeout(() => { clearInterval(timerId)}, ms);    
   }, 1000);
     }
